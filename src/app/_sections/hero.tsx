@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Crt } from "@/components/crt";
-import { ArrowDown, ArrowUpRight } from "@/components/icons";
+import { ArrowDown, ArrowUpRight, LinkedIn } from "@/components/icons";
 import { profile } from "@/content/profile";
 
 export function Hero() {
@@ -70,6 +70,17 @@ export function Hero() {
               Resume
               <ArrowUpRight className="size-4" />
             </Link>
+            {profile.linkedin && (
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer me"
+                aria-label="LinkedIn profile"
+                className="inline-flex size-12 items-center justify-center rounded-full border border-ink transition-colors hover:bg-ink hover:text-paper"
+              >
+                <LinkedIn className="size-5" />
+              </a>
+            )}
           </div>
         </div>
 

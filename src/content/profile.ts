@@ -22,7 +22,7 @@ export const profile = {
   /** Display form and E.164 form of the same number. */
   phone: { display: "+91 85471 71712", e164: "+918547171712" },
   /** Public LinkedIn URL. The LinkedIn link and `sameAs` in structured data appear once this is set. */
-  linkedin: "" as string,
+  linkedin: "https://www.linkedin.com/in/dijishadileep13142072/" as string,
   cv: "/cv/Dijisha-Dileep-QA-Engineer-Resume.pdf",
   /** Hero photo, shown on the CRT screen (4:3, cropped from the centre). */
   portrait: {

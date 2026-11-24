@@ -4,7 +4,7 @@
 
 - [x] Real portrait added (`public/portrait/dij-img.jpeg`). Still to do: use it on the share image too, and consider a WebP copy.
 
-- [ ] LinkedIn URL → `profile.linkedin` in `src/content/profile.ts` (adds the LinkedIn links and `sameAs` in structured data).
+- [x] LinkedIn URL → `profile.linkedin` in `src/content/profile.ts` (adds the LinkedIn links and `sameAs` in structured data).
 - [ ] Dijisha to confirm pronouns (copy is first person for now; the assistant uses her name).
 - [ ] Dijisha to read the site copy written in her voice (About, How I test) and approve or edit.
 - [ ] Project details, if wanted: what was tested, her role, tools, and whether the client can be named. A Projects section can follow.
