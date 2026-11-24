@@ -49,10 +49,12 @@ export function useScrollScene(
     if (!t) return;
     let raf = 0;
     let cur = Number.NaN;
+    // Touch scrolling already glides; a slow follow on top of it feels like lag, so follow faster there
+    const follow = matchMedia("(pointer: coarse)").matches ? 0.32 : 0.16;
 
+    // The stage sticks below the site header, so progress starts when the track reaches that line
+    const top = stage.current ? parseFloat(getComputedStyle(stage.current).top) || 0 : 0;
     const goal = () => {
-      // The stage sticks below the site header, so progress starts when the track reaches that line
-      const top = stage.current ? parseFloat(getComputedStyle(stage.current).top) || 0 : 0;
       const span = t.offsetHeight - innerHeight;
       const p = span > 0 ? Math.min(1, Math.max(0, (top - t.getBoundingClientRect().top) / span)) : 0;
       return dwell(toItem(p, n));
@@ -60,7 +62,7 @@ export function useScrollScene(
 
     const tick = () => {
       const g = goal();
-      cur = Number.isNaN(cur) ? g : cur + (g - cur) * 0.16;
+      cur = Number.isNaN(cur) ? g : cur + (g - cur) * follow;
       if (Math.abs(g - cur) < 0.002) cur = g;
       draw.current(cur);
       setActive(Math.round(cur));

@@ -75,7 +75,23 @@ export function Intro({ name, tags }: { name: string; tags: string[] }) {
 
       <div className="flex flex-col items-center">
         <div className="folder">
-          <div className="folder-back" />
+          {/* Back panel and its tab in one piece (the folder has a fixed aspect ratio, so the drawing never stretches) */}
+          <svg aria-hidden className="folder-back" viewBox="0 0 440 373" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="folder-back-fill" x1="0" y1="0" x2="0.35" y2="1">
+                <stop offset="0" stopColor="rgb(255 255 255 / 0.2)" />
+                <stop offset="1" stopColor="rgb(255 255 255 / 0.05)" />
+              </linearGradient>
+            </defs>
+            <path
+              d="M0 22Q0 2 20 2H146Q160 2 167 13L174 25Q178 31 190 31H418Q438 31 438 53V351Q438 371 418 371H20Q0 371 0 351Z"
+              fill="url(#folder-back-fill)"
+              stroke="rgb(255 255 255 / 0.26)"
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
+          {/* Loose sheets inside, their edges showing above the pocket */}
+          <div aria-hidden className="folder-stack" />
 
           {files.map((f) => (
             <div

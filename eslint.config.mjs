@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Verification builds (NEXT_DIST_DIR=.next-verify)
+    ".next-verify/**",
   ]),
 ]);
 

@@ -19,7 +19,7 @@ export type CareerEntry = {
 };
 
 /** Experience as a folder of files. While the section scrolls past, the files rise out of the folder one at a time
- *  (oldest first), rest so they can be read, and drop back as the next comes up; a file that would not fit under the
+ *  (latest first), rest so they can be read, and drop back as the next comes up; a file that would not fit under the
  *  heading (phones) is scaled to fit. Wide screens add the divider tabs and the `aside` (Dijisha at her desk), with an
  *  arrival sequence: she is alone in the middle first, moves to the left, then the tabs and folder come in. With
  *  reduced motion (and in the HTML) it is a plain list of the same files. */
@@ -34,6 +34,7 @@ export function CareerStack({ entries, label, header, aside }: { entries: Career
   const tabs = useRef<HTMLElement>(null);
   const folder = useRef<HTMLDivElement>(null);
   const deskShift = useRef(0);
+  const stickTop = useRef<number | null>(null);
   const live = useLive();
   const n = entries.length;
 
@@ -43,7 +44,8 @@ export function CareerStack({ entries, label, header, aside }: { entries: Career
     const st = stage.current;
     const r = row.current;
     if (!st || !r) return;
-    const top = st.getBoundingClientRect().top - (parseFloat(getComputedStyle(st).top) || 0);
+    stickTop.current ??= parseFloat(getComputedStyle(st).top) || 0;
+    const top = st.getBoundingClientRect().top - stickTop.current;
     const p = Math.min(1, Math.max(0, 1 - top / (innerHeight * 0.75)));
     const ease = (v: number) => 1 - (1 - v) ** 3;
     const d = desk.current;
@@ -174,12 +176,12 @@ export function CareerStack({ entries, label, header, aside }: { entries: Career
                 <div ref={front} aria-hidden className="gfolder-front">
                   <div className="flex items-end justify-between gap-4">
                     <div>
-                      <p className="font-display text-[clamp(2rem,4vw,3rem)] leading-none text-chalk">Career file</p>
+                      <p className="font-display text-[clamp(1.6rem,4vw,3rem)] leading-none text-chalk">Career file</p>
                       <p className="mt-1 text-chalk/80">
                         {active + 1} of {n} · {entries[active]?.short}
                       </p>
                     </div>
-                    <span className="grid size-12 place-items-center rounded-full border border-chalk/50 text-chalk">↓</span>
+                    <span className="grid size-12 place-items-center max-lg:hidden rounded-full border border-chalk/50 text-chalk">↓</span>
                   </div>
                 </div>
               )}

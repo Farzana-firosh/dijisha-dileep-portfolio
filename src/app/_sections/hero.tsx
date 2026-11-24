@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Crt } from "@/components/crt";
-import { ArrowDown, ArrowUpRight } from "@/components/icons";
+import { ArrowDown, ArrowUpRight, LinkedIn } from "@/components/icons";
 import { profile } from "@/content/profile";
 
 export function Hero() {
@@ -30,10 +30,15 @@ export function Hero() {
             </span>
           </h1>
 
-          <p data-spec="p · lead" className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft sm:text-xl">
-            I test web and mobile applications: end-to-end manual testing, automation with{" "}
-            <span className="text-ink">Selenium WebDriver</span>, and API testing in{" "}
-            <span className="text-ink">Postman</span>, in Agile Scrum teams.
+          <p data-spec="p · lead" className="mt-8 max-w-xl text-lg leading-relaxed text-ink-soft max-lg:text-ink/85 sm:text-xl">
+            I test web and mobile applications through end-to-end manual testing, automation testing using{" "}
+            <span className="text-ink">Selenium WebDriver</span> and <span className="text-ink">Playwright</span>, and API testing
+            with <span className="text-ink">Postman</span>.
+            <span className="max-sm:hidden">
+              {" "}
+              I work in Agile Scrum teams, ensuring software quality through effective test planning, execution and defect
+              tracking.
+            </span>
           </p>
 
           {/* Checked off one by one on load */}
@@ -65,11 +70,22 @@ export function Hero() {
               Resume
               <ArrowUpRight className="size-4" />
             </Link>
+            {profile.linkedin && (
+              <a
+                href={profile.linkedin}
+                target="_blank"
+                rel="noopener noreferrer me"
+                aria-label="LinkedIn profile"
+                className="inline-flex size-12 items-center justify-center rounded-full border border-ink transition-colors hover:bg-ink hover:text-paper"
+              >
+                <LinkedIn className="size-5" />
+              </a>
+            )}
           </div>
         </div>
 
         {/* Beside the text on wide screens; on smaller ones a faded backdrop behind it, so the hero fits one screen */}
-        <div className="pointer-events-none absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 opacity-30 lg:pointer-events-auto lg:static lg:z-auto lg:translate-y-0 lg:opacity-100">
+        <div className="pointer-events-none absolute inset-x-0 top-1/2 -z-10 -translate-y-1/2 opacity-[0.07] lg:pointer-events-auto lg:static lg:z-auto lg:translate-y-0 lg:opacity-100">
           <Crt photo={profile.portrait} />
         </div>
       </div>

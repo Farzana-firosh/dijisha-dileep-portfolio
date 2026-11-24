@@ -55,7 +55,7 @@ export default function Image() {
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
           <div style={{ display: "flex", fontSize: 38, fontWeight: 600 }}>{profile.role}</div>
           <div style={{ display: "flex", background: mark, color: ink, fontSize: 24, padding: "8px 18px" }}>
-            Selenium · Postman · Agile
+            Selenium · Playwright · Postman · Agile
           </div>
         </div>
       </div>

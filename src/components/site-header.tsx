@@ -46,10 +46,10 @@ export function SiteHeader({ askEnabled }: { askEnabled: boolean }) {
               type="button"
               popoverTarget={CONTACT_PANEL_ID}
               data-contact-tab="ask"
-              className="annot inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-full bg-ink px-3 text-paper sm:px-4 transition-colors hover:bg-accent hover:text-on-accent"
+              className="annot inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-ink px-4 text-paper transition-colors hover:bg-accent hover:text-on-accent max-sm:hidden"
             >
               <Spark className="size-4" />
-              <span className="max-sm:sr-only">Ask</span>
+              Ask
             </button>
           )}
           <button

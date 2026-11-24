@@ -22,7 +22,7 @@ export const profile = {
   /** Display form and E.164 form of the same number. */
   phone: { display: "+91 85471 71712", e164: "+918547171712" },
   /** Public LinkedIn URL. The LinkedIn link and `sameAs` in structured data appear once this is set. */
-  linkedin: "" as string,
+  linkedin: "https://www.linkedin.com/in/dijishadileep13142072/" as string,
   cv: "/cv/Dijisha-Dileep-QA-Engineer-Resume.pdf",
   /** Hero photo, shown on the CRT screen (4:3, cropped from the centre). */
   portrait: {
@@ -33,10 +33,10 @@ export const profile = {
   },
   currentRole: { title: "Software Tester", company: "Kiebot", since: "2023" },
   summary:
-    "Software QA engineer with 3+ years of manual and automation testing using Selenium WebDriver. Test case design, defect tracking, functional, regression and smoke testing, and API testing with Postman, in Agile Scrum teams.",
+    "Software QA engineer with 3+ years of experience. I test web and mobile applications through end-to-end manual testing, automation testing using Selenium WebDriver and Playwright, and API testing with Postman. I also have experience working in Agile Scrum environments, ensuring software quality through effective test planning, execution and defect tracking.",
   /** Search description: name, role, place and the main skills, under 160 characters. */
   seoDescription:
-    "Dijisha Dileep is a QA engineer in Bangalore: manual and automation testing with Selenium WebDriver, API testing with Postman, Agile Scrum.",
+    "Dijisha Dileep, QA engineer in Bangalore: manual and automation testing with Selenium WebDriver and Playwright, API testing with Postman, Agile Scrum.",
   ask: {
     dailyLimit: 6,
   },

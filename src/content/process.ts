@@ -25,7 +25,7 @@ export const steps = [
     id: "execute",
     output: "Test results",
     title: "Execute",
-    body: "Run functional, regression, smoke and UAT cycles. Manually end to end, with Selenium WebDriver where automation fits, and against the API in Postman.",
+    body: "Run functional, regression, smoke and UAT cycles. Manually end to end, with Selenium WebDriver or Playwright where automation fits, and against the API in Postman.",
   },
   {
     id: "report",

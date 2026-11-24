@@ -540,6 +540,189 @@ html[data-inspect] [data-spec]::after {
   pointer-events: none;
 }
 
+/* Wire grid memo board (About): black wire on the light wall, steel on the dark one, with the grid's shadow on the
+   wall behind it */
+.wire-board {
+  --wire: #24272d;
+  --wire-shade: rgb(0 0 0 / 0.13);
+  position: relative;
+  isolation: isolate;
+  border: 4px solid var(--wire);
+  border-radius: 6px;
+  /* Each wire: a dark core with a thin highlight along it, so it reads as round */
+  background:
+    linear-gradient(rgb(255 255 255 / 0.28) 1px, transparent 1px) 0 0 / 46px 46px,
+    linear-gradient(90deg, rgb(255 255 255 / 0.22) 1px, transparent 1px) 0 0 / 46px 46px,
+    linear-gradient(var(--wire) 3px, transparent 3px) -1px -1px / 46px 46px,
+    linear-gradient(90deg, var(--wire) 3px, transparent 3px) -1px -1px / 46px 46px;
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12);
+}
+
+/* The clips that hold the board off the wall */
+.wire-mount {
+  position: absolute;
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+  margin: -9px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f4f5f7, #9aa0a9 55%, #5d636c);
+  box-shadow: 1px 3px 4px rgb(0 0 0 / 0.35);
+}
+
+.wire-mount::after {
+  content: "";
+  position: absolute;
+  inset: 6px 2px;
+  background: rgb(0 0 0 / 0.45);
+  rotate: 35deg;
+}
+
+/* Instant photo: thick bottom border, slight paper tone, glossy print */
+.polaroid {
+  padding: 7px 7px 8px;
+  background: linear-gradient(#fdfdfb, #f1f0ea);
+  box-shadow:
+    0 1px 1px rgb(0 0 0 / 0.12),
+    0 12px 20px -10px rgb(0 0 0 / 0.5);
+}
+
+.polaroid-shot {
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.15), inset 0 6px 14px rgb(0 0 0 / 0.18);
+}
+
+.polaroid-shot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(125deg, rgb(255 255 255 / 0.32), rgb(255 255 255 / 0) 40%);
+  pointer-events: none;
+}
+
+:root[data-theme="dark"] .wire-board {
+  --wire: #a9afb9;
+  --wire-shade: rgb(0 0 0 / 0.55);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .wire-board {
+    --wire: #a9afb9;
+    --wire-shade: rgb(0 0 0 / 0.55);
+  }
+}
+
+.wire-board::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -3px;
+  translate: 8px 11px;
+  border: 3px solid var(--wire-shade);
+  border-radius: 4px;
+  background:
+    linear-gradient(var(--wire-shade) 2px, transparent 2px) -1px -1px / 46px 46px,
+    linear-gradient(90deg, var(--wire-shade) 2px, transparent 2px) -1px -1px / 46px 46px;
+  filter: blur(1.5px);
+  pointer-events: none;
+}
+
+/* Wooden clothes peg holding a photo to the wire */
+.peg {
+  position: absolute;
+  z-index: 3;
+  top: -22px;
+  left: calc(50% - 7px);
+  width: 14px;
+  height: 40px;
+  border-radius: 3px 3px 2px 2px;
+  background:
+    repeating-linear-gradient(176deg, rgb(120 80 30 / 0) 0 5px, rgb(120 80 30 / 0.18) 5px 6px),
+    linear-gradient(90deg, #b98a4f, #e4c08c 45%, #a87a42 50%, #d8b27c 55%, #a87a42);
+  box-shadow: 2px 4px 4px rgb(0 0 0 / 0.3);
+  pointer-events: none;
+}
+
+.peg::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  top: 13px;
+  height: 5px;
+  border-radius: 2px;
+  background: linear-gradient(#d5d9df, #80868f);
+}
+
+/* Clear plastic holder around the ID card: a slot for the clip, a rim, glare across the front */
+.idcard-holder {
+  position: relative;
+  padding: 16px 7px 7px;
+  border-radius: 16px;
+  background: linear-gradient(160deg, rgb(255 255 255 / 0.55), rgb(220 228 240 / 0.3));
+  border: 1px solid rgb(255 255 255 / 0.7);
+  box-shadow:
+    inset 0 0 0 1px rgb(0 0 0 / 0.08),
+    0 2px 3px rgb(0 0 0 / 0.12),
+    0 24px 36px -16px rgb(0 0 0 / 0.55);
+}
+
+.idcard-holder::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: calc(50% - 1.6rem);
+  width: 3.2rem;
+  height: 6px;
+  border-radius: 99px;
+  background: var(--color-paper);
+  box-shadow: inset 0 1px 2px rgb(0 0 0 / 0.45);
+}
+
+.idcard-holder::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(115deg, rgb(255 255 255 / 0) 30%, rgb(255 255 255 / 0.4) 38%, rgb(255 255 255 / 0) 46%);
+  pointer-events: none;
+}
+
+/* The card itself */
+.idcard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: var(--color-sheet);
+  color: var(--color-sheet-ink);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.08);
+}
+
+/* Hologram sticker */
+.idcard-holo {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 50%;
+  background: conic-gradient(from 30deg, #ffd1f0, #c6e7ff, #d9ffc9, #fff2b8, #e0caff, #ffd1f0);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.7), 0 0 0 1px rgb(0 0 0 / 0.08);
+  opacity: 0.9;
+}
+
+.idcard-code {
+  background: repeating-linear-gradient(
+    90deg,
+    var(--color-sheet-ink) 0 2px,
+    transparent 2px 4px,
+    var(--color-sheet-ink) 4px 5px,
+    transparent 5px 8px,
+    var(--color-sheet-ink) 8px 11px,
+    transparent 11px 13px
+  );
+  opacity: 0.75;
+  width: 7.5rem;
+}
+
 /* Tiny print, readable only through the magnifier */
 .micro {
   font: 500 5.5px/1.5 var(--font-sans);
@@ -1365,19 +1548,28 @@ html[data-inspect] [data-spec]::after {
 /* Phones: a shallower folder; the front pocket is lower, so a file has more room to come out */
 @media (max-width: 63.98rem) {
   .gfolder {
-    height: min(20rem, 36svh);
+    height: min(18rem, 32svh);
   }
   .gfolder-card {
-    top: calc(64% - 6px);
+    top: calc(68% - 6px);
   }
   .gfolder-front {
-    height: 36%;
-    padding: 0 1.25rem 1rem;
+    height: 32%;
+    padding: 0 1.25rem 0.85rem;
   }
   .gfolder-label {
-    top: calc(64% + 0.9rem);
-    left: 1.25rem;
+    top: calc(68% + 0.7rem);
+    left: auto;
+    right: 1.25rem;
   }
+}
+
+/* The desk photo is cut off on the right (desk, mug) and at the floor: fade those edges into the page */
+.feather-edge {
+  mask:
+    linear-gradient(to right, #000 62%, transparent 97%),
+    linear-gradient(to bottom, #000 84%, transparent 99%);
+  mask-composite: intersect;
 }
 
 /* Divider tabs on the folder's left side (Experience): pale paper, the open one pulled out in lime */
@@ -1873,25 +2065,41 @@ html[data-intro] .intro-root {
   translate: 0 40px;
 }
 
-.folder-back {
-  position: absolute;
-  inset: 8% 0 0 0;
-  border-radius: 22px;
-  background: linear-gradient(165deg, rgb(255 255 255 / 0.16), rgb(255 255 255 / 0.04));
-  border: 1px solid rgb(255 255 255 / 0.2);
-}
-
-.folder-back::before {
+/* Shadow of the folder on the floor */
+.folder::after {
   content: "";
   position: absolute;
-  left: -1px;
-  top: -9%;
-  width: 40%;
-  height: 10%;
-  border-radius: 16px 16px 0 0;
-  background: rgb(255 255 255 / 0.12);
-  border: 1px solid rgb(255 255 255 / 0.2);
-  border-bottom: 0;
+  z-index: -1;
+  left: 6%;
+  right: 6%;
+  bottom: -9%;
+  height: 12%;
+  background: radial-gradient(closest-side, rgb(0 0 0 / 0.6), transparent);
+}
+
+.folder-back {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 1px 0 rgb(255 255 255 / 0.08));
+}
+
+/* Plain sheets standing in the folder: three paper edges, slightly out of line */
+.folder-stack {
+  position: absolute;
+  left: 4%;
+  right: 5%;
+  top: 17%;
+  height: 14%;
+  border-radius: 4px 4px 0 0;
+  background: linear-gradient(#e9ebef, #d5d8de);
+  rotate: 0.6deg;
+  box-shadow:
+    -3px -5px 0 -1px #c9ccd3,
+    4px -9px 0 -2px #b9bcc4,
+    0 -2px 8px rgb(0 0 0 / 0.35);
 }
 
 .folder-file {
@@ -1900,13 +2108,43 @@ html[data-intro] .intro-root {
   top: -3%;
   width: 52%;
   height: 38%;
-  border-radius: 12px;
+  border-radius: 6px 6px 3px 3px;
   padding: 12px 14px;
   rotate: var(--rot);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.25) inset,
+    0 10px 20px -8px rgb(0 0 0 / 0.55);
   transition:
     translate 0.9s var(--ease-out-soft) var(--d),
     rotate 0.9s var(--ease-out-soft) var(--d),
     opacity 0.5s var(--d);
+}
+
+/* Typed lines on each document */
+.folder-file::after {
+  content: "";
+  position: absolute;
+  inset: 44px 16px 10px;
+  background: repeating-linear-gradient(currentColor 0 2px, transparent 2px 10px);
+  mask: linear-gradient(90deg, #000 70%, rgb(0 0 0 / 0.35));
+  opacity: 0.16;
+}
+
+.folder-file.is-dark::after {
+  display: none;
+}
+
+/* Paper clip on the About sheet */
+.folder-file.is-light::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  right: 24px;
+  width: 11px;
+  height: 32px;
+  border: 2px solid #a4abb5;
+  border-radius: 6px;
+  box-shadow: 1px 2px 2px rgb(0 0 0 / 0.25);
 }
 
 .folder-file.is-dark {
@@ -1957,9 +2195,33 @@ html[data-intro] .intro-root {
   backdrop-filter: blur(16px) saturate(1.2);
   -webkit-backdrop-filter: blur(16px) saturate(1.2);
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.45),
+    inset 0 2px 0 rgb(255 255 255 / 0.5),
+    inset 0 -3px 0 rgb(255 255 255 / 0.1),
     inset 0 -40px 60px -30px rgb(150 140 255 / 0.6),
+    0 -6px 14px -6px rgb(0 0 0 / 0.5),
     0 40px 80px -30px rgb(90 80 255 / 0.6);
+}
+
+/* A light sweep across the glass, once */
+.folder-front::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 38%, rgb(255 255 255 / 0.14) 47%, rgb(255 255 255 / 0.04) 53%, transparent 60%);
+  translate: -110% 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .folder-front::before {
+    animation: glass-sweep 1.8s 0.5s var(--ease-out-soft) forwards;
+  }
+}
+
+@keyframes glass-sweep {
+  to {
+    translate: 110% 0;
+  }
 }
 
 .intro-root:is([data-phase="open"], [data-phase="exit"]) .folder-front {
@@ -2127,7 +2389,7 @@ html[data-intro] .intro-root {
   opacity: 0;
 }
 
-/* DEF-01: tape peeling off the title block */
+/* DEF-01: tape peeling off the QA photo */
 .defect-tape {
   transform-origin: 0% 50%;
 }

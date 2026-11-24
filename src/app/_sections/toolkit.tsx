@@ -39,7 +39,7 @@ function Piece({ id, side, className = "", children }: { id: string; side: "l" |
  *  list is real HTML; strings, pins and motion are decoration. */
 export function Toolkit() {
   const testing = group("testing");
-  const selenium = group("automation").items[0];
+  const [selenium, playwright] = group("automation").items;
 
   return (
     <section id="skills" aria-labelledby="skills-title" className="board board-stage relative z-10 overflow-x-clip">
@@ -87,13 +87,26 @@ export function Toolkit() {
           <Piece id="selenium" side="l" className="lg:col-start-1 lg:row-start-1 lg:ml-10">
             <div className="hang sheet-paper relative p-4 pt-7" style={vars({ "--r": "-4deg", "--sway": "5s", "--delay": "-1s" })}>
               <Pin id="selenium" className="left-1/2 top-3" />
-              <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-3">
-                <ToolLogo name="Selenium" className="size-10 shrink-0" />
-                <div>
-                  <h3 className="font-semibold">Selenium WebDriver</h3>
-                  <p className="annot text-sm text-sheet-soft">Automation · {selenium.note}</p>
-                </div>
-              </div>
+              <h3 className="annot text-sheet-soft">Automation</h3>
+              <ul className="mt-2 space-y-2.5">
+                <li className="flex items-center gap-2.5 sm:gap-3">
+                  <ToolLogo name="Selenium" className="size-9 shrink-0" />
+                  <span>
+                    <span className="block font-semibold">{selenium.name}</span>
+                    <span className="annot block text-sm text-sheet-soft">{selenium.note}</span>
+                  </span>
+                </li>
+                <li className="flex items-center gap-2.5 sm:gap-3">
+                  {/* No Playwright mark in simple-icons: a plain monogram instead */}
+                  <span aria-hidden className="grid size-9 shrink-0 place-items-center rounded-md bg-sheet-ink text-sm font-bold text-sheet">
+                    PW
+                  </span>
+                  <span>
+                    <span className="block font-semibold">{playwright.name}</span>
+                    <span className="annot block text-sm text-sheet-soft">{playwright.note}</span>
+                  </span>
+                </li>
+              </ul>
             </div>
           </Piece>
 
