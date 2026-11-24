@@ -69,10 +69,9 @@ const checks: Check[] = [
     name: "buttons are at least 24px",
     run: () => {
       const els = [...document.querySelectorAll("button")].filter(visible);
-      const small = els.filter((el) => {
-        const r = el.getBoundingClientRect();
-        return r.width < 24 || r.height < 24;
-      }).length;
+      // Layout size, not on-screen size: the check runs while this sheet is still scaled down (crumpled), and
+      // transforms don't change a button's target size
+      const small = els.filter((el) => el.offsetWidth < 24 || el.offsetHeight < 24).length;
       return { ok: small === 0, detail: small ? `${small} too small` : `${els.length} checked` };
     },
   },
