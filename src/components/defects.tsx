@@ -7,7 +7,7 @@ import { Bug, Check } from "./icons";
  *  Decorative and optional; the tracker in the header lists them for keyboard and screen-reader users. */
 
 export const defects = [
-  { id: "tape", code: "DEF-01", title: "Tape peeling off the title block", section: "About" },
+  { id: "tape", code: "DEF-01", title: "Tape peeling off a photo", section: "About" },
   { id: "typo", code: "DEF-02", title: "Typo in the test report heading", section: "Skills" },
   { id: "pin", code: "DEF-03", title: "Tool card hanging off its missing pin", section: "Skills" },
   { id: "tab", code: "DEF-04", title: "Folder label stuck on crooked", section: "Experience" },

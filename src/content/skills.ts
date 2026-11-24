@@ -26,7 +26,10 @@ export const skillGroups: SkillGroup[] = [
   {
     id: "automation",
     label: "Automation",
-    items: [{ name: "Selenium WebDriver", note: "learned with Java at TCS and ICT Academy" }],
+    items: [
+      { name: "Selenium WebDriver", note: "learned with Java at TCS and ICT Academy" },
+      { name: "Playwright", note: "JavaScript" },
+    ],
   },
   {
     id: "api",
