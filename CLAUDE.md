@@ -6,7 +6,7 @@ Portfolio for a Software Tester / QA Engineer (Bangalore). Static Next.js site w
 
 Next.js 16 (App Router, `cacheComponents`) · React 19 · TypeScript strict · Tailwind CSS v4 via `@tailwindcss/postcss` · pnpm only. Version-specific APIs must be checked against `node_modules/next/dist/docs/` before use.
 
-Dependencies beyond Next/React: `simple-icons` (Selenium, Postman, Git, GitLab logos only) and `lucide-react` (interface icons, at the user's request). No animation, 3D or smooth-scroll libraries: motion is CSS (scroll-driven `animation-timeline: view()`, transitions) plus small client components. Add a dependency only with a stated reason.
+Dependencies beyond Next/React: `simple-icons` (Selenium, Postman, Git, GitLab logos only) and `lucide-react` (interface icons, at the user's request), `@vercel/analytics` (visitor and page-view counts, `<Analytics />` in the root layout; enable Web Analytics in the Vercel project). No animation, 3D or smooth-scroll libraries: motion is CSS (scroll-driven `animation-timeline: view()`, transitions) plus small client components. Add a dependency only with a stated reason.
 
 ## Structure
 
