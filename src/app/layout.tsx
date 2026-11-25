@@ -8,6 +8,7 @@ import { ClickPing } from "@/components/click-ping";
 import { curlScript, introScript, themeScript } from "@/components/shared";
 import { profile, siteUrl } from "@/content/profile";
 import { ld, website } from "@/lib/seo";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 export const ensureStatic = "navigation";
@@ -99,6 +100,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ContactPanel />
         <ChatLauncher />
         <script type="application/ld+json" dangerouslySetInnerHTML={ld(website)} />
+        <Analytics />
       </body>
     </html>
   );
